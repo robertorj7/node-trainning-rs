@@ -1,6 +1,7 @@
 import fastify from 'fastify';
 import crypto from 'node:crypto';
 import { db } from './database.js';
+import { env } from './env/index.ts';
 
 const app = fastify()
 
@@ -15,6 +16,9 @@ app.get('/', async () => {
   return transaction
 })
 
-app.listen({ port: 3333 }).then(() => {
-  console.log('HTTP Server running on http://localhost:3333')
+app.listen({ 
+  port: env.PORT 
+})
+  .then(() => {
+  console.log(`HTTP Server running on http://localhost:${env.PORT}`)
 })

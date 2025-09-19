@@ -1,15 +1,12 @@
 import 'dotenv/config'
 import type { Knex } from "knex"
 import knex from 'knex'
-
-if(!process.env.DATABASE_URL) {
-  throw new Error('Env DATABASE_URL is not defined')
-}
+import { env } from './env/index.ts'
 
 export const config: Knex.Config = {
   client: 'sqlite3',
   connection: {
-    filename: process.env.DATABASE_URL
+    filename: env.DATABASE_URL
   },
   useNullAsDefault: true,
   migrations: {
