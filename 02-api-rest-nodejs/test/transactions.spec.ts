@@ -40,7 +40,7 @@ describe('Transactions routes', () => {
 
       const listTransactionsResponse = await request(app.server)
         .get('/transactions')
-        .set('Cookie', cookies)
+        .set('Cookie', cookies ? cookies.join('; ') : '')
         .expect(200)
 
       expect(listTransactionsResponse.body.transactions).toEqual([
