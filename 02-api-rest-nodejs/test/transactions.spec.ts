@@ -21,21 +21,18 @@ describe('Transactions routes', () => {
   it('should allow user to create a new transaction', async () => {
       const response = await request(app.server)
         .post('/transactions')
-        .set('Cookie', 'sessionId=123456')
         .send({
           title: 'New transaction',
           amount: 5000,
           type: 'credit'
         });
-  
-        console.log(response.headers)
+          
         expect(response.status).toBe(201);
   })
 
   it('should be able to list all transactions', async () => {
     const createTransactionResponse = await request(app.server)
       .post('/transactions')
-      .set('Cookie', 'sessionId=123456')
       .send({
         title: 'New transaction',
         amount: 5000,
@@ -61,7 +58,6 @@ describe('Transactions routes', () => {
   it('should be able to get a specific transaction', async () => {
     const createTransactionResponse = await request(app.server)
       .post('/transactions')
-      .set('Cookie', 'sessionId=123456')
       .send({
         title: 'New transaction',
         amount: 5000,
