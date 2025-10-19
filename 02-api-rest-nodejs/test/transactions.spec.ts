@@ -1,7 +1,6 @@
-import { test, beforeAll, afterAll, expect, describe, it, beforeEach } from 'vitest'
+import { beforeAll, afterAll, expect, describe, it, beforeEach } from 'vitest'
 import request from 'supertest'
 import { app } from '../src/app.ts'
-import { id } from 'zod/locales'
 import { execSync } from 'child_process'
 
 describe('Transactions routes', () => {
